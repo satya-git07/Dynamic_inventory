@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/sgandeplli/terraform_ansible.git'
+                git branch: 'main', url: 'https://github.com/satya-git07/Dynamic_inventory.git'
             }
         }
         stage('Terraform Init & Apply') {
