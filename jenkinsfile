@@ -57,4 +57,23 @@ pipeline {
             cleanWs()
         }
     }
+    post {
+        always {
+            emailext(
+                subject: "Pipeline Status: ${BUILD_NUMBER}",
+                body: ''' <html>
+                            <body> 
+                                <p>Build Status: ${BUILD_STATUS}</p>
+                                <p>Build Number: ${BUILD_NUMBER}</p>
+                                <p>Check the build: <a href="${BUILD_URL}">${BUILD_URL}</a></p>
+                            </body>
+                          </html>''',
+                to: 'sbappadala@softility.com',
+                from: 'jenkins@example.com',
+                replyTo: 'jenkins@example.com',
+                mimeType: 'text/html'
+            )
+
+        }
+    }
 }
